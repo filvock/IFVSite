@@ -32,7 +32,7 @@ class TesourariaController extends Controller
     public function index()
     {
         $user = Auth()->User();
-        return view('Admin.tesouraria.index', compact('user'));
+        return view('admin.tesouraria.index', compact('user'));
     }
     
     public function viewTesouraria()
@@ -41,7 +41,7 @@ class TesourariaController extends Controller
         
         $uri = ($this->request->route()->uri());
         
-        return view('Admin.tesouraria.index', compact('user', 'uri'));
+        return view('admin.tesouraria.index', compact('user', 'uri'));
     }
     
      public function viewTesourariaEntradas()
@@ -51,7 +51,7 @@ class TesourariaController extends Controller
          
         $contascredito = $this->contascredito->all();
         
-        return view('Admin.tesouraria.entradas.index', compact('user', 'uri', 'contascredito'));
+        return view('admin.tesouraria.entradas.index', compact('user', 'uri', 'contascredito'));
     }
     
     public function viewTesourariaSaidas()
@@ -61,7 +61,7 @@ class TesourariaController extends Controller
                 
         $contasdebito = $this->contasdebito->all();
         
-        return view('Admin.tesouraria.saidas.index', compact('user', 'uri','contasdebito'));
+        return view('admin.tesouraria.saidas.index', compact('user', 'uri','contasdebito'));
     }
     
     public function viewTesourariaTransferencias()
@@ -70,7 +70,7 @@ class TesourariaController extends Controller
         
         $uri = ($this->request->route()->uri());
        
-        return view('Admin.tesouraria.transferencias.index', compact('user', 'uri'));
+        return view('admin.tesouraria.transferencias.index', compact('user', 'uri'));
     }
     
     public function viewTesourariaExcluir()
@@ -79,7 +79,7 @@ class TesourariaController extends Controller
         
         $uri = ($this->request->route()->uri());
         
-        return view('Admin.tesouraria.excluir.index', compact('user', 'uri'));
+        return view('admin.tesouraria.excluir.index', compact('user', 'uri'));
     }
     
     public function CriarRelatorio(Request $request)
@@ -95,7 +95,7 @@ class TesourariaController extends Controller
         $_SESSION["dataInicio"] = $request->dataInicio ;
         $_SESSION["dataFim"] = $request->dataFim ;        
         
-        return view('Admin.tesouraria.excluir.relatorio', compact('user', 'uri','tesouraria'));
+        return view('admin.tesouraria.excluir.relatorio', compact('user', 'uri','tesouraria'));
     }
     
     public function delete($id)
@@ -113,7 +113,7 @@ class TesourariaController extends Controller
         
         $tesouraria = $this->tesouraria->whereBetween('Data', [$_SESSION["dataInicio"], $_SESSION["dataFim"]])->where('Igreja', $user->user_igreja)->orderby('Data','asc')->get();
                 
-        return view('Admin.tesouraria.excluir.relatorio', compact('user', 'uriAtual','tesouraria'));
+        return view('admin.tesouraria.excluir.relatorio', compact('user', 'uriAtual','tesouraria'));
     }
     
     
@@ -161,7 +161,7 @@ class TesourariaController extends Controller
         
   
         
-        return view('Admin.tesouraria.entradas.index', compact('user', 'uri','contascredito'));
+        return view('admin.tesouraria.entradas.index', compact('user', 'uri','contascredito'));
     }
     public function NovaSaida(Request $request)
     {        
@@ -209,7 +209,7 @@ class TesourariaController extends Controller
                 
         
         
-        return view('Admin.tesouraria.saidas.index', compact('user', 'uri','contasdebito'));
+        return view('admin.tesouraria.saidas.index', compact('user', 'uri','contasdebito'));
     }
     
     public function Transferencias(Request $request)
@@ -285,7 +285,7 @@ class TesourariaController extends Controller
             
             $entradacaixa->save();
         }
-        return view('Admin.tesouraria.transferencias.index', compact('user', 'uri'));
+        return view('admin.tesouraria.transferencias.index', compact('user', 'uri'));
     }
      
     
@@ -301,7 +301,7 @@ class TesourariaController extends Controller
             
         }
         
-        return view('Admin.tesouraria.editar.relatorio', compact('user', 'uri', 'dadosRelatorio'));
+        return view('admin.tesouraria.editar.relatorio', compact('user', 'uri', 'dadosRelatorio'));
     }
     
     
