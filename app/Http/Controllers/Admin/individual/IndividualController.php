@@ -31,7 +31,7 @@ class IndividualController extends Controller
     public function index()
     {
         $user = Auth()->User();
-        return view('Admin.individual.index', compact('user'));
+        return view('admin.individual.index', compact('user'));
     }
     
     public function viewIndividual()
@@ -45,6 +45,6 @@ class IndividualController extends Controller
         $uriAtual = $exploder[1];
         $usuarios =$this->usuarios->all();
         
-        return view('Admin.individual.index', compact('user', 'uriAtual', 'usuarios'));
+        return view('admin.individual.index', compact('user', 'uriAtual', 'usuarios'));
     }
 }

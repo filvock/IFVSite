@@ -34,7 +34,7 @@ class RelatoriosController extends Controller
         $user = Auth()->User();
         $uri = ($this->request->route()->uri());
         
-        return view('Admin.relatorios.index', compact('user', 'uri'));
+        return view('admin.relatorios.index', compact('user', 'uri'));
     }
     
     public function RelatorioLocal()
@@ -43,7 +43,7 @@ class RelatoriosController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('Admin.relatorios.locais.index', compact('user', 'uri', 'usuarios'));
+        return view('admin.relatorios.locais.index', compact('user', 'uri', 'usuarios'));
     }
     
     public function RelatorioGerencial()
@@ -52,7 +52,7 @@ class RelatoriosController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('Admin.relatorios.gerencial.index', compact('user', 'uri', 'usuarios'));
+        return view('admin.relatorios.gerencial.index', compact('user', 'uri', 'usuarios'));
     }
     
     
@@ -62,7 +62,7 @@ class RelatoriosController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('Admin.relatorios.locais.livrocaixa.index', compact('user', 'uri', 'usuarios'));
+        return view('admin.relatorios.locais.livrocaixa.index', compact('user', 'uri', 'usuarios'));
     }
     
     public function GeraPaginaLivroCaixa(Request $request)
@@ -71,7 +71,7 @@ class RelatoriosController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('Admin.relatorios.locais.livrocaixa.caixa.index', compact('user', 'uri', 'usuarios')); 
+        return view('admin.relatorios.locais.livrocaixa.caixa.index', compact('user', 'uri', 'usuarios')); 
     }
     
     public function GeraPDFLivroCaixa(Request $request)
@@ -248,7 +248,7 @@ class RelatoriosController extends Controller
         //dd($dadosRelatorio->all());
             
         
-        return view('Admin.relatorios.locais.livrocaixa.caixa.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
+        return view('admin.relatorios.locais.livrocaixa.caixa.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
     }
         
      public function GeraPaginaLivroBanco()
@@ -257,7 +257,7 @@ class RelatoriosController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('Admin.relatorios.locais.livrocaixa.banco.index', compact('user', 'uri', 'usuarios'));
+        return view('admin.relatorios.locais.livrocaixa.banco.index', compact('user', 'uri', 'usuarios'));
     }
     
     public function GeraLivroBanco(Request $request)
@@ -289,7 +289,7 @@ class RelatoriosController extends Controller
         $totalEntradas = number_format($totalEntradas,  2, ',', '.');
         //dd($dadosRelatorio->all());
         
-        return view('Admin.relatorios.locais.livrocaixa.banco.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
+        return view('admin.relatorios.locais.livrocaixa.banco.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
     }
     
     public function GeraPDFLivroBanco(Request $request)
@@ -441,7 +441,7 @@ class RelatoriosController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('Admin.relatorios.locais.livrocaixa.caixabanco.index', compact('user', 'uri', 'usuarios'));
+        return view('admin.relatorios.locais.livrocaixa.caixabanco.index', compact('user', 'uri', 'usuarios'));
     }
     public function GeraLivroCaixaBanco(Request $request)
     {   
@@ -473,7 +473,7 @@ class RelatoriosController extends Controller
         //dd($dadosRelatorio->all());
             
         
-        return view('Admin.relatorios.locais.livrocaixa.caixabanco.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
+        return view('admin.relatorios.locais.livrocaixa.caixabanco.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
     }
     
     public function GeraPDFLivroCaixaBanco(Request $request)
