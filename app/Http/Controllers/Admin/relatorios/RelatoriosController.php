@@ -228,7 +228,7 @@ class RelatoriosController extends Controller
         $_SESSION["dataFim"] = $request->dataFim ;
         
         $dadosRelatorio = $this->tesouraria->where('Origem','=','Caixa')->whereBetween('Data',[$request->dataInicio, $request->dataFim])->where('Igreja', $user->user_igreja)->orderby('Data','asc')->get();
-           
+         
         $totalEntradas = 0;
         $totalSaidas = 0;
                     
