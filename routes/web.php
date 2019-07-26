@@ -68,7 +68,7 @@ Route::prefix('admin/relatorios/locais')->middleware('auth')->namespace('Admin\r
 });
 
 Route::prefix('admin/relatorios/gerenciais')->middleware('auth','role.admin')->namespace('Admin\relatorios')->group(function () {
-    //Route::get('/', 'RelatoriosController@RelatorioGerencial')->name('admin.relatorios.gerenciais.index');   	
+    Route::get('/', 'RelatoriosController@RelatorioGerencial')->name('admin.relatorios.gerenciais.index');   	
     //Route::get('/livrocaixa', 'RelatoriosController@GeraLivro')->name('admin.relatorios.gerenciais.livrocaixa.index');   
     //Route::get('/livrocaixa/caixa', 'RelatoriosController@GeraPaginaLivroCaixa')->name('admin.relatorios.gerenciais.livrocaixa.caixa.index');   
     //Route::post('/livrocaixa/caixa', 'RelatoriosController@GeraLivroCaixa')->name('admin.relatorios.gerenciais.livrocaixa.caixa.index');
