@@ -21,13 +21,13 @@
           <div class="col-lg-3 col-xs-6">        
             <div class="small-box bg-teal">
                   <div class="inner">                    
-                      <h3>Contas-Totais</h3>                           
+                      <h3>Contas-Tot.</h3>                           
                       <p>Relatório de Plano de Contas</p>
                   </div> 
                       <div class="icon">
                   <i class="fas fa-dollar"></i>
                       </div>
-                      <a href="{{route('admin.tesouraria.saidas.index')}}" class="small-box-footer">Gerar Relatório <i class="fa fa-arrow-circle-right"></i></a>
+                      <a href="{{route('admin.relatorios.locais.contastotal.index')}}" class="small-box-footer">Gerar Relatório <i class="fa fa-arrow-circle-right"></i></a>
               </div>
           </div>
           
@@ -36,8 +36,8 @@
           <div class="col-lg-3 col-xs-6">        
             <div class="small-box bg-teal">
                   <div class="inner">                    
-                      <h3>Contas-Detal.</h3>                    
-                      <p>Relat. Plano de Contas detalhado</p>
+                      <h3>Contas-Det.</h3>                    
+                      <p>Rel. Plano de Contas detalhado</p>
                   </div> 
                       <div class="icon">
                           <i class="fa fa-align-left"></i>
@@ -50,7 +50,7 @@
             <div class="small-box bg-teal">
                   <div class="inner">                    
                       <h3>Totais</h3>                        
-                      <p>Relatório totais de entradas e saídas</p>
+                      <p>Rel. totais de entradas e saídas</p>
                   </div> 
                       <div class="icon">
                           <i class="fa fa-columns"></i>
