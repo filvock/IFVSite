@@ -1,9 +1,6 @@
 <?php
 
-
-
-
-namespace App\Http\Controllers\Admin\relatorios;
+namespace App\Http\Controllers\Admin\relatorioslocais;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +9,7 @@ use App\Models\TesourariaGeral;
 use PDF;
 use Dompdf\Dompdf;
 
-class RelatoriosCaixaController extends Controller
+class RelatoriosLocaisController extends Controller
 {
     public $request;
     public $usuarios;
@@ -27,26 +24,20 @@ class RelatoriosCaixaController extends Controller
         
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
         $user = Auth()->User();
         $uri = ($this->request->route()->uri());
-        
-        return view('admin.relatorios.locais.livrocaixa.index', compact('user', 'uri'));
-    }
-        
-    public function RelatorioLocal()
-    {   
-        $user = Auth()->User();
-        $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('admin.relatorios.locais.livrocaixa.index', compact('user', 'uri', 'usuarios'));
-    }    
-            /**
-     * Relatórios de livro caixa
-     *
-     */
+        return view('Admin.relatorios.locais.index', compact('user', 'uri', 'usuarios'));
+    }
+    
     
     public function GeraLivro()
     {   
@@ -54,7 +45,7 @@ class RelatoriosCaixaController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('admin.relatorios.locais.livrocaixa.index', compact('user', 'uri', 'usuarios'));
+        return view('Admin.relatorios.locais.livrocaixa.index', compact('user', 'uri', 'usuarios'));
     }
     
     public function GeraPaginaLivroCaixa(Request $request)
@@ -63,9 +54,43 @@ class RelatoriosCaixaController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('admin.relatorios.locais.livrocaixa.caixa.index', compact('user', 'uri', 'usuarios')); 
+        return view('Admin.relatorios.locais.livrocaixa.caixa.index', compact('user', 'uri', 'usuarios')); 
     }
     
+    public function GeraLivroCaixa(Request $request)
+    {   
+        $user = Auth()->User();
+        $uri = ($this->request->route()->uri());
+        
+        session_start();
+        $_SESSION["dataInicio"] = $request->dataInicio ;
+        $_SESSION["dataFim"] = $request->dataFim ;
+        
+        $dadosRelatorio = $this->tesouraria->where('Origem','=','Caixa')->whereBetween('Data',[$request->dataInicio, $request->dataFim])->where('Igreja', $user->user_igreja)->orderby('Data','asc')->get();
+           
+        $totalEntradas = 0;
+        $totalSaidas = 0;
+                    
+        for ($j=0; $j<count($dadosRelatorio); $j++){            
+            if ($dadosRelatorio[$j]->Valor > 0){
+                $totalEntradas = $totalEntradas + $dadosRelatorio[$j]->Valor;
+            }
+            else{
+                $totalSaidas = $totalSaidas + $dadosRelatorio[$j]->Valor;
+            }            
+            $dadosRelatorio[$j]->Valor = number_format($dadosRelatorio[$j]->Valor,  2, ',', '.');
+            
+        }
+        
+        $totalSaidas = number_format($totalSaidas,  2, ',', '.');
+        $totalEntradas = number_format($totalEntradas,  2, ',', '.');
+        //dd($dadosRelatorio->all());
+            
+        
+        return view('Admin.relatorios.locais.livrocaixa.caixa.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
+    }
+
+
     public function GeraPDFLivroCaixa(Request $request)
     {   
         $pdf = new Dompdf();
@@ -210,38 +235,7 @@ class RelatoriosCaixaController extends Controller
     }
     
     
-    public function GeraLivroCaixa(Request $request)
-    {   
-        $user = Auth()->User();
-        $uri = ($this->request->route()->uri());
-        
-        session_start();
-        $_SESSION["dataInicio"] = $request->dataInicio ;
-        $_SESSION["dataFim"] = $request->dataFim ;
-        
-        $dadosRelatorio = $this->tesouraria->where('Origem','=','Caixa')->whereBetween('Data',[$request->dataInicio, $request->dataFim])->where('Igreja', $user->user_igreja)->orderby('Data','asc')->get();
-         
-        $totalEntradas = 0;
-        $totalSaidas = 0;
-                    
-        for ($j=0; $j<count($dadosRelatorio); $j++){            
-            if ($dadosRelatorio[$j]->Valor > 0){
-                $totalEntradas = $totalEntradas + $dadosRelatorio[$j]->Valor;
-            }
-            else{
-                $totalSaidas = $totalSaidas + $dadosRelatorio[$j]->Valor;
-            }            
-            $dadosRelatorio[$j]->Valor = number_format($dadosRelatorio[$j]->Valor,  2, ',', '.');
-            
-        }
-        
-        $totalSaidas = number_format($totalSaidas,  2, ',', '.');
-        $totalEntradas = number_format($totalEntradas,  2, ',', '.');
-        //dd($dadosRelatorio->all());
-            
-        
-        return view('admin.relatorios.locais.livrocaixa.caixa.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
-    }
+    
         
      public function GeraPaginaLivroBanco()
     {   
@@ -249,7 +243,7 @@ class RelatoriosCaixaController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('admin.relatorios.locais.livrocaixa.banco.index', compact('user', 'uri', 'usuarios'));
+        return view('Admin.relatorios.locais.livrocaixa.banco.index', compact('user', 'uri', 'usuarios'));
     }
     
     public function GeraLivroBanco(Request $request)
@@ -281,7 +275,7 @@ class RelatoriosCaixaController extends Controller
         $totalEntradas = number_format($totalEntradas,  2, ',', '.');
         //dd($dadosRelatorio->all());
         
-        return view('admin.relatorios.locais.livrocaixa.banco.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
+        return view('Admin.relatorios.locais.livrocaixa.banco.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
     }
     
     public function GeraPDFLivroBanco(Request $request)
@@ -433,7 +427,7 @@ class RelatoriosCaixaController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('admin.relatorios.locais.livrocaixa.caixabanco.index', compact('user', 'uri', 'usuarios'));
+        return view('Admin.relatorios.locais.livrocaixa.caixabanco.index', compact('user', 'uri', 'usuarios'));
     }
     public function GeraLivroCaixaBanco(Request $request)
     {   
@@ -465,7 +459,7 @@ class RelatoriosCaixaController extends Controller
         //dd($dadosRelatorio->all());
             
         
-        return view('admin.relatorios.locais.livrocaixa.caixabanco.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
+        return view('Admin.relatorios.locais.livrocaixa.caixabanco.relatorio', compact('user', 'uri', 'dadosRelatorio', 'totalEntradas','totalSaidas'));
     }
     
     public function GeraPDFLivroCaixaBanco(Request $request)
@@ -483,7 +477,7 @@ class RelatoriosCaixaController extends Controller
     {               
         $user = Auth()->User();        
         session_start();
-        $dadosRelatorio = $this->tesouraria->whereBetween('Data', [$_SESSION["dataInicio"], $_SESSION["dataFim"]])->where('Igreja', $user->user_igreja)->orderby('Data','asc')->get();
+        $dadosRelatorio = $this->tesouraria->where('Origem','=','Caixa')->whereBetween('Data', [$_SESSION["dataInicio"], $_SESSION["dataFim"]])->where('Igreja', $user->user_igreja)->orderby('Data','asc')->get();
         $dadosTotal = $this->tesouraria->whereBetween('Data',['2014/01/01', $_SESSION["dataInicio"]])->where('Igreja', $user->user_igreja)->orderby('Data','asc')->get();       
         
         $totalEntradas = 0;

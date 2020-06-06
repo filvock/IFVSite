@@ -9,8 +9,8 @@
           <!-- small box -->
           <div class="small-box bg-teal">
             <div class="inner">
-                <h3>Entradas</h3>
-                <p>Adicionar nova entrada</p>
+                <h3 style="font-size:3.5vmax;">Entradas</h3>
+                <p style="font-size:1vmax;">Adicionar nova entrada</p>
             </div>
             <div class="icon">
                 <i class="fa fa-money"></i>
@@ -22,8 +22,8 @@
         <div class="col-lg-3 col-xs-6">        
           <div class="small-box bg-teal">
                 <div class="inner">                    
-                    <h3>Saídas</h3>                           
-                    <p>Adicionar nova saída</p>
+                    <h3 style="font-size:3.5vmax;">Saídas</h3>                           
+                    <p style="font-size:1vmax;">Adicionar nova saída</p>
                 </div> 
                     <div class="icon">
                         <i class="fa fa-money"></i>
@@ -37,8 +37,8 @@
         <div class="col-lg-3 col-xs-6">        
           <div class="small-box bg-teal">
                 <div class="inner">                    
-                    <h3>Transfer.</h3>                    
-                    <p>Transferir entre caixa e banco</p>
+                    <h3 style="font-size:3.5vmax;">Transfer.</h3>                    
+                    <p style="font-size:1vmax;">Transferir entre caixa e banco</p>
                 </div> 
                     <div class="icon">
                         <i class="fas fa-arrows-alt-h"></i>
@@ -50,28 +50,13 @@
         <div class="col-lg-3 col-xs-6">        
           <div class="small-box bg-teal">
                 <div class="inner">                    
-                    <h3>Excluir</h3>                        
-                    <p>Excluir lançamentos</p>
+                    <h3 style="font-size:3.5vmax;">Excluir</h3>                        
+                    <p style="font-size:1vmax;">Excluir lançamentos</p>
                 </div> 
                     <div class="icon">
                         <i class="fa fa-remove"></i>
                     </div>
                     <a href="{{route('admin.tesouraria.excluir.index')}}" class="small-box-footer">Excluir<i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-      
-        
-        <div class="col-lg-3 col-xs-6">        
-            <div class="small-box bg-olive">
-                <div class="inner">
-                    @inject('usuarios','App\Models\User')
-                    <h3>{{$usuarios->count()}}</h3>
-                </div>            
-                <p>TESTE</p>
-                    <div class="icon">
-                        <i class="fa fa-users"></i>
-                    </div>
-                    <a href="{{route('admin.sistema.index')}}" class="small-box-footer">Novas Entradas<i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
       

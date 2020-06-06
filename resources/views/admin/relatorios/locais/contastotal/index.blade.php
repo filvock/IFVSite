@@ -7,7 +7,7 @@
     </div>
 
     <div class="box-body">
-        <form method="POST" action="{{action('Admin\relatorios\RelatoriosContasController@GeraLivroContasTotal')}}" name="dados" onSubmit="return enviardados();">
+        <form method="POST" action="{{action('Admin\relatorioslocais\RelatoriosContasTotalController@GeraLivroPCTotal')}}" name="dados" onSubmit="return enviardados();">
             {!! csrf_field() !!}
             <div class="form-group">
                 <h4>Período do Relatório</h4>
@@ -17,11 +17,11 @@
                 <input type="date" name="dataFim" placeholder="Data de Fim">
                 
 
-            <div class="form-group">
-                <br />
-                <button type="submit" class="btn btn-success"> Gerar </button>
-                <button type="reset" class="btn btn-warning"> Limpar </button>
-            </div>
+                <div class="form-group">
+                                    <br />
+                    <button type="submit" class="btn btn-success"> Gerar </button>
+                    <button type="reset" class="btn btn-warning"> Limpar </button>
+                </div>
 
         </form>
     </div>
@@ -44,7 +44,7 @@
             return false;
         }
 
-        
+
         return true;
     }
 

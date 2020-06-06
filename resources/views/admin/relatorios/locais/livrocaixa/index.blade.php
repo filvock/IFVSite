@@ -8,8 +8,8 @@
             <!-- small box -->
             <div class="small-box bg-teal">
               <div class="inner">
-                  <h3>Caixa</h3>
-                  <p>Relatório do Caixa</p>
+                  <h3 style="font-size:3.5vmax;">Caixa</h3>
+                  <p style="font-size:1vmax;">Relatório do Caixa</p>
               </div>
               <div class="icon">
                   <i class="far fa-chart-bar"></i>
@@ -21,8 +21,8 @@
           <div class="col-lg-3 col-xs-6">        
             <div class="small-box bg-teal">
                   <div class="inner">                    
-                      <h3>Banco</h3>                           
-                      <p>Relatório do Banco</p>
+                      <h3 style="font-size:3.5vmax;">Banco</h3>                           
+                      <p style="font-size:1vmax;">Relatório do Banco</p>
                   </div> 
                       <div class="icon">
                   <i class="far fa-chart-bar"></i>
@@ -36,8 +36,8 @@
           <div class="col-lg-3 col-xs-6">        
             <div class="small-box bg-teal">
                   <div class="inner">                    
-                      <h3>Caixa/Banco</h3>                    
-                      <p>Relatório de Caixa e Banco</p>
+                      <h3 style="font-size:3vmax;">Caixa/Banco</h3>                    
+                      <p style="font-size:1vmax;">Relatório de Caixa e Banco</p>
                   </div> 
                       <div class="icon">
                   <i class="far fa-chart-bar"></i>

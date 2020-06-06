@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\individual;
+namespace App\Http\Controllers\Admin\relatoriosgerenciais;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\TesourariaGeral;
+use PDF;
+use Dompdf\Dompdf;
 
-
-class IndividualController extends Controller
+class RelatoriosGerencController extends Controller
 {
     public $request;
     public $usuarios;
@@ -31,20 +32,10 @@ class IndividualController extends Controller
     public function index()
     {
         $user = Auth()->User();
-        return view('Admin.individual.index', compact('user'));
-    }
-    
-    public function viewIndividual()
-    {
-        $user = Auth()->User();
-        //dd($this->request->route());
-        
         $uri = ($this->request->route()->uri());
-        
-        $exploder = explode("/", $uri);
-        $uriAtual = $exploder[1];
         $usuarios =$this->usuarios->all();
         
-        return view('Admin.individual.index', compact('user', 'uriAtual', 'usuarios'));
-    }
+        return view('Admin.relatorios.gerenciais.index', compact('user', 'uri', 'usuarios'));
+    }   
+    
 }

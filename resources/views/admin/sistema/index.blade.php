@@ -9,8 +9,8 @@
           <!-- small box -->
           <div class="small-box bg-teal">
             <div class="inner">
-                <h3>Cidades</h3>
-                <p>Adicionar, remover cidades</p>
+                <h3  style="font-size:3.5vmax;">Cidades</h3>
+                <p  style="font-size:1vmax;">Adicionar ou remover cidades</p>
             </div>
             <div class="icon">
                 <i class="fas fa-city"></i>
@@ -22,8 +22,8 @@
         <div class="col-lg-3 col-xs-6">        
           <div class="small-box bg-teal">
                 <div class="inner">                    
-                    <h3>Usuários</h3>
-                    <p>Adicionar, remover usuarios</p>
+                    <h3  style="font-size:3.5vmax;">Usuários</h3>
+                    <p  style="font-size:1vmax;">Adicionar ou remover usuarios</p>
                 </div>            
                     <div class="icon">
                         <i class="fa fa-users"></i>
@@ -37,9 +37,8 @@
         <div class="col-lg-3 col-xs-6">        
           <div class="small-box bg-teal">
                 <div class="inner">                    
-                    <h3>igrejas   </h3>                    
-                           
-                <p>Adicionar, remover igrejas</p>
+                    <h3  style="font-size:3.5vmax;">igrejas   </h3>                    
+                    <p  style="font-size:1vmax;">Adicionar ou remover igrejas</p>
                 </div>     
                 <div class="icon">
                         <i class="fas fa-place-of-worship"></i>
@@ -51,34 +50,16 @@
         <div class="col-lg-3 col-xs-6">        
           <div class="small-box bg-teal">
                 <div class="inner">                    
-                    <h3>Contas</h3>
-                           
-                <p>Adicionar, remover contas</p>
+                    <h3 style="font-size:3.5vmax;">Contas</h3>
+                    <p style="font-size:1vmax;">Adicionar ou remover contas</p>
                 </div> 
                     <div class="icon">
                         <i class="fas fa-piggy-bank"></i>
                     </div>
                     <a href="{{route('admin.sistema.planoscontas.index')}}" class="small-box-footer">Administrar <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div>
-      
+        </div>   
         
-        <div class="col-lg-3 col-xs-6">        
-            <div class="small-box bg-olive">
-                <div class="inner">
-                    @inject('usuarios','App\Models\User')
-                    <h3>{{$usuarios->count()}}</h3>
-                </div>            
-                <p>TESTE</p>
-                    <div class="icon">
-                        <i class="fa fa-users"></i>
-                    </div>
-                    <a href="{{route('admin.sistema.index')}}" class="small-box-footer">Novas Entradas<i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-      
-        
-      
     <!-- /.row (main row) -->
     </div>
       

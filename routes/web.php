@@ -51,39 +51,64 @@ Route::prefix('admin/sistema')->middleware('auth','role.admin')->namespace('Admi
 
 Route::get('admin/relatorios/', 'Admin\relatorios\RelatoriosController@index')->name('admin.relatorios.index');   
 
-Route::prefix('admin/relatorios/locais')->middleware('auth')->namespace('Admin\relatorios')->group(function () {
-    Route::get('/', 'RelatoriosController@RelatorioLocal')->name('admin.relatorios.locais.index');   
-    Route::get('/livrocaixa', 'RelatoriosCaixaController@GeraLivro')->name('admin.relatorios.locais.livrocaixa.index');   
-    Route::get('/livrocaixa/caixa', 'RelatoriosCaixaController@GeraPaginaLivroCaixa')->name('admin.relatorios.locais.livrocaixa.caixa.index');   
-    Route::post('/livrocaixa/caixa', 'RelatoriosCaixaController@GeraLivroCaixa')->name('admin.relatorios.locais.livrocaixa.caixa.index');
-    Route::get('/livrocaixa/banco', 'RelatoriosCaixaController@GeraPaginaLivroBanco')->name('admin.relatorios.locais.livrocaixa.banco.index');   
-    Route::post('/livrocaixa/banco', 'RelatoriosCaixaController@GeraLivroBanco')->name('admin.relatorios.locais.livrocaixa.banco.index');   
-    Route::get('/livrocaixa/caixabanco', 'RelatoriosCaixaController@GeraPaginaLivroCaixaBanco')->name('admin.relatorios.locais.livrocaixa.caixabanco.index');   
-    Route::post('/livrocaixa/caixabanco', 'RelatoriosCaixaController@GeraLivroCaixaBanco')->name('admin.relatorios.locais.livrocaixa.caixabanco.index');   
+Route::prefix('admin/relatorios/locais')->middleware('auth')->namespace('Admin\relatorioslocais')->group(
+function () 
+
+{
+    Route::get('/', 'RelatoriosLocaisController@index')->name('admin.relatorios.locais.index');   
     
-    Route::get('/livrocaixa/caixa/pdf', 'RelatoriosCaixaController@GeraPDFLivroCaixa');   
-    Route::get('/livrocaixa/banco/pdf', 'RelatoriosCaixaController@GeraPDFLivroBanco');   
-    Route::get('/livrocaixa/caixabanco/pdf', 'RelatoriosCaixaController@GeraPDFLivroCaixaBanco');  
+    Route::get('/livrocaixa', 'RelatoriosLocaisController@GeraLivro')->name('admin.relatorios.locais.livrocaixa.index'); 
+
+    Route::get('/livrocaixa/caixa', 'RelatoriosLocaisController@GeraPaginaLivroCaixa')->name('admin.relatorios.locais.livrocaixa.caixa.index');   
+
+    Route::post('/livrocaixa/caixa', 'RelatoriosLocaisController@GeraLivroCaixa')->name('admin.relatorios.locais.livrocaixa.caixa.index');
+
+    Route::get('/livrocaixa/banco', 'RelatoriosLocaisController@GeraPaginaLivroBanco')->name('admin.relatorios.locais.livrocaixa.banco.index');   
+
+    Route::post('/livrocaixa/banco', 'RelatoriosLocaisController@GeraLivroBanco')->name('admin.relatorios.locais.livrocaixa.banco.index');   
+
+    Route::get('/livrocaixa/caixabanco', 'RelatoriosLocaisController@GeraPaginaLivroCaixaBanco')->name('admin.relatorios.locais.livrocaixa.caixabanco.index');   
+
+    Route::post('/livrocaixa/caixabanco', 'RelatoriosLocaisController@GeraLivroCaixaBanco')->name('admin.relatorios.locais.livrocaixa.caixabanco.index');   
     
-    Route::get('/contastotal', 'RelatoriosContasController@GeraPaginaContasTotal')->name('admin.relatorios.locais.contastotal.index');   
-    Route::post('/contastotal', 'RelatoriosContasController@GeraLivroContasTotal')->name('admin.relatorios.locais.contastotal.index');    
     
+    Route::get('/livrocaixa/caixa/pdf', 'RelatoriosLocaisController@GeraPDFLivroCaixa');   
+    Route::get('/livrocaixa/banco/pdf', 'RelatoriosLocaisController@GeraPDFLivroBanco');   
+    Route::get('/livrocaixa/caixabanco/pdf', 'RelatoriosLocaisController@GeraPDFLivroCaixaBanco'); 
+
+
+    Route::get('/contastotal', 'RelatoriosContasTotalController@index')->name('admin.relatorios.locais.contastotal.index');       
+    Route::post('/contastotal', 'RelatoriosContasTotalController@GeraLivroPCTotal')->name('admin.relatorios.locais.contastotal.index');
+    Route::get('/contastotal/pdf', 'RelatoriosContasTotalController@GeraPDFLivroPCTotal');     
+
+
+    Route::get('/contasdetal', 'RelatoriosContasDetalController@index')->name('admin.relatorios.locais.contasdetal.index');       
+    Route::post('/contasdetal', 'RelatoriosContasDetalController@GeraLivroPCDetal')->name('admin.relatorios.locais.contasdetal.index');
+    Route::get('/contasdetal/pdf', 'RelatoriosContasDetalController@GeraPDFLivroPCDetal');     
+
+    Route::get('/totais', 'RelatoriosTotaisController@index')->name('admin.relatorios.locais.totais.index');
+    Route::post('/totais', 'RelatoriosTotaisController@GeraLivroTotais')->name('admin.relatorios.locais.totais.index');
+    Route::get('/totais/pdf', 'RelatoriosTotaisController@GeraPDFLivroTotais');     
+
+
+
     
 });
 
-Route::prefix('admin/relatorios/gerenciais')->middleware('auth','role.admin')->namespace('Admin\relatorios')->group(function () {
+Route::prefix('admin/relatorios/gerenciais')->middleware('auth','role.admin')->namespace('Admin\relatoriosgerenciais')->group(function () 
+{
     Route::get('/', 'RelatoriosController@RelatorioGerencial')->name('admin.relatorios.gerenciais.index');   	
-    //Route::get('/livrocaixa', 'RelatoriosController@GeraLivro')->name('admin.relatorios.gerenciais.livrocaixa.index');   
-    //Route::get('/livrocaixa/caixa', 'RelatoriosController@GeraPaginaLivroCaixa')->name('admin.relatorios.gerenciais.livrocaixa.caixa.index');   
-    //Route::post('/livrocaixa/caixa', 'RelatoriosController@GeraLivroCaixa')->name('admin.relatorios.gerenciais.livrocaixa.caixa.index');
-    //Route::get('/livrocaixa/banco', 'RelatoriosController@GeraPaginaLivroBanco')->name('admin.relatorios.livrocaixa.gerenciais.banco.index');   
-    //Route::post('/livrocaixa/banco', 'RelatoriosController@GeraLivroBanco')->name('admin.relatorios.livrocaixa.gerenciais.banco.index');   
-    //Route::get('/livrocaixa/caixabanco', 'RelatoriosController@GeraPaginaLivroCaixaBanco')->name('admin.relatorios.gerenciais.livrocaixa.caixabanco.index');   
-    //Route::post('/livrocaixa/caixabanco', 'RelatoriosController@GeraLivroCaixaBanco')->name('admin.relatorios.gerenciais.livrocaixa.caixabanco.index');   
+    Route::get('/livrocaixa', 'RelatoriosController@GeraLivro')->name('admin.relatorios.gerenciais.livrocaixa.index');   
+    Route::get('/livrocaixa/caixa', 'RelatoriosController@GeraPaginaLivroCaixa')->name('admin.relatorios.gerenciais.livrocaixa.caixa.index');   
+    Route::post('/livrocaixa/caixa', 'RelatoriosController@GeraLivroCaixa')->name('admin.relatorios.gerenciais.livrocaixa.caixa.index');
+    Route::get('/livrocaixa/banco', 'RelatoriosController@GeraPaginaLivroBanco')->name('admin.relatorios.livrocaixa.gerenciais.banco.index');   
+    Route::post('/livrocaixa/banco', 'RelatoriosController@GeraLivroBanco')->name('admin.relatorios.livrocaixa.gerenciais.banco.index');   
+    Route::get('/livrocaixa/caixabanco', 'RelatoriosController@GeraPaginaLivroCaixaBanco')->name('admin.relatorios.gerenciais.livrocaixa.caixabanco.index');   
+    Route::post('/livrocaixa/caixabanco', 'RelatoriosController@GeraLivroCaixaBanco')->name('admin.relatorios.gerenciais.livrocaixa.caixabanco.index');   
 });
 
 
-Route::get('/admin/individual', 'Admin\AdminController@viewIndividual')->name('admin.individual.index');
+Route::get('/admin/individual', 'Admin\individual\IndividualController@viewIndividual')->name('admin.individual.index');
 
 
 Auth::routes();

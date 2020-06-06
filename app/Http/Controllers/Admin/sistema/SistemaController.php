@@ -31,7 +31,7 @@ class SistemaController extends Controller
     public function index()
     {
         $user = Auth()->User();
-        return view('admin.sistema.index', compact('user'));
+        return view('Admin.sistema.index', compact('user'));
     }
      
     public function viewSistemaCidades()
@@ -45,7 +45,7 @@ class SistemaController extends Controller
         $uriAtual = $exploder[1];
         $usuarios =$this->usuarios->all();
         
-        return view('admin.sistema.cidades.index', compact('user', 'uriAtual', 'usuarios'));
+        return view('Admin.sistema.cidades.index', compact('user', 'uriAtual', 'usuarios'));
     }
     
     public function viewSistemaPlanosContas()
@@ -59,7 +59,7 @@ class SistemaController extends Controller
         $uriAtual = $exploder[1];
         $usuarios =$this->usuarios->all();
         
-        return view('admin.sistema.planoscontas.index', compact('user', 'uriAtual', 'usuarios'));
+        return view('Admin.sistema.planoscontas.index', compact('user', 'uriAtual', 'usuarios'));
     }
     
     public function viewSistemaUsuarios()
@@ -73,7 +73,7 @@ class SistemaController extends Controller
         $uriAtual = $exploder[1];
         $usuarios =$this->usuarios->all();
         
-        return view('admin.sistema.usuarios.index', compact('user', 'uriAtual', 'usuarios'));
+        return view('Admin.sistema.usuarios.index', compact('user', 'uriAtual', 'usuarios'));
     }
     
     public function viewSistemaIgrejas()
@@ -87,7 +87,7 @@ class SistemaController extends Controller
         $uriAtual = $exploder[1];
         $usuarios =$this->usuarios->all();
         
-        return view('admin.sistema.igrejas.index', compact('user', 'uriAtual', 'usuarios'));
+        return view('Admin.sistema.igrejas.index', compact('user', 'uriAtual', 'usuarios'));
     }
  
  
@@ -103,6 +103,6 @@ class SistemaController extends Controller
         $uriAtual = $exploder[1];
         $usuarios =$this->usuarios->all();
         
-        return view('admin.sistema.index', compact('user', 'uriAtual', 'usuarios'));
+        return view('Admin.sistema.index', compact('user', 'uriAtual', 'usuarios'));
     }
 }

@@ -24,21 +24,26 @@ class RelatoriosController extends Controller
         
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
         $user = Auth()->User();
         $uri = ($this->request->route()->uri());
         
-        return view('admin.relatorios.index', compact('user', 'uri'));
+        return view('Admin.relatorios.index', compact('user', 'uri'));
     }
-        
+    
     public function RelatorioLocal()
     {   
         $user = Auth()->User();
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('admin.relatorios.locais.index', compact('user', 'uri', 'usuarios'));
+        return view('Admin.relatorios.locais.index', compact('user', 'uri', 'usuarios'));
     }
     
     public function RelatorioGerencial()
@@ -47,6 +52,6 @@ class RelatoriosController extends Controller
         $uri = ($this->request->route()->uri());
         $usuarios =$this->usuarios->all();
         
-        return view('admin.relatorios.gerencial.index', compact('user', 'uri', 'usuarios'));
-    }
+        return view('Admin.relatorios.gerencial.index', compact('user', 'uri', 'usuarios'));
+    }    
 }

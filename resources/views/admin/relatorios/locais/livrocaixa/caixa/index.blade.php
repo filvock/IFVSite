@@ -7,7 +7,7 @@
     </div>
 
     <div class="box-body">
-        <form method="POST" action="{{action('Admin\relatorios\RelatoriosCaixaController@GeraLivroCaixa')}}" name="dados" onSubmit="return enviardados();">
+        <form method="POST" action="{{action('Admin\relatorioslocais\RelatoriosLocaisController@GeraLivroCaixa')}}" name="dados" onSubmit="return enviardados();">
             {!! csrf_field() !!}
             <div class="form-group">
                 <h4>Período do Relatório</h4>
